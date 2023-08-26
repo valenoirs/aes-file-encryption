@@ -10,20 +10,6 @@ router.get('/', async (req: Request, res: Response) => {
   })
 })
 
-router.get('/decrypt', async (req: Request, res: Response) => {
-  return res.render('decrypt', {
-    layout: 'layout',
-    notification: req.flash('notification'),
-  })
-})
-
-router.get('/encrypt', async (req: Request, res: Response) => {
-  return res.render('encrypt', {
-    layout: 'layout',
-    notification: req.flash('notification'),
-  })
-})
-
 router.get('/faq', async (req: Request, res: Response) => {
   return res.render('faq', {
     layout: 'layout',

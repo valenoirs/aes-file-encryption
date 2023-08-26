@@ -17,10 +17,19 @@
           aria-label="Close"
         ></button>
       </div>
-      <div class="modal-body p-5">
-        <h1 class="mb-5 text-center text-info"><i class="bi bi-shield-lock-fill"></i></h1>
+      <div class="modal-body p-5" style="height: 350px">
+        <h1 id="encrypt-icon" class="mb-5 text-center text-info"><i class="bi bi-shield-lock-fill"></i></h1>
 
-        <form method="post" action="/file/encrypt" enctype="multipart/form-data">
+        <div id="encrypted-gif" class="text-center" style="margin-top: 50px; z-index: 5000; display: none">
+          <img src="./assets/loading.gif" alt="gif" width="110" style="filter: saturate(2);"/>
+          <h4 class="text-light mt-3">Encrypting...</h4>
+        </div>
+        
+        <div id="encrypted-text" class="text-center" style="margin-top: 110px; z-index: 5000; display: none">
+          <h4 class="text-light mt-3">Encrypted</h4>
+        </div>
+
+        <form id="encrypt-form" onsubmit="encrypt()" method="post" action="/file/encrypt" enctype="multipart/form-data">
             <div class="mb-3">
                 <input type="file" class="form-control" id="file" name="file" data-bs-theme="dark" required>
             </div>

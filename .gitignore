@@ -6,7 +6,7 @@ ignore
 # Code
 src/log
 src/ignore
-src/public/upload
+src/public/tmp
 
 # Build
 build
