@@ -16,11 +16,23 @@ export const encryptFile = async (req: Request, res: Response) => {
 
     const fileName = Date.now().toString() + ext
 
+    const startTime = new Date().getTime()
+
     const encrypted = encrypt(req.file?.buffer, keyword.replace(/\s+/g, ''))
+
+    const endTime = new Date().getTime()
+
+    console.log(
+      'ENCRYPT TIME :',
+      ((endTime - startTime) / 1000)
+        .toString()
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ','),
+      ' Second'
+    )
 
     appendFileSync(`${dir}/${fileName}`, encrypted, 'binary')
 
-    return res.download(`${dir}/${fileName}`)
+    res.download(`${dir}/${fileName}`)
   } catch (error) {
     return
   }
@@ -37,11 +49,23 @@ export const decryptFile = async (req: Request, res: Response) => {
 
     const fileName = Date.now().toString() + ext
 
+    const startTime = new Date().getTime()
+
     const decrypted = decrypt(req.file?.buffer, keyword.replace(/\s+/g, ''))
+
+    const endTime = new Date().getTime()
+
+    console.log(
+      'DECRYPT TIME :',
+      ((endTime - startTime) / 1000)
+        .toString()
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ','),
+      ' Second'
+    )
 
     appendFileSync(`${dir}/${fileName}`, decrypted, 'binary')
 
-    return res.download(`${dir}/${fileName}`)
+    res.download(`${dir}/${fileName}`)
   } catch (error) {
     return
   }
